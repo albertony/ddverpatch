@@ -53,7 +53,7 @@ The command will set ERRORLEVEL 0 on success, otherwise errorlevel is non-zero.
 /fn - preserves Original filename, Internal name in the existing version resource of the file.
 
 /langid \<number\> - language id for new version resource.<br>
-     Use with /va. Default is Language Neutral.<br>
+     Use with /va or /rf. Default is Language Neutral.<br>
      \<number\> is combination of primary and sub-language IDs. ENU is 1033 or 0x409.
 
 /vft2 num - specify driver subtype (VFT2_xxx value, see winver.h)
@@ -172,7 +172,9 @@ Lowest 16 bits of this value are resource id; can not be 0.
 Next 8 bits are the resource type: one of RT_xxx constants in winuser.h, or user defined.
 If the type value is 0, RT_RCDATA (10) is assumed.
 High 8 bits of the #id arg are reserved0.
-The language code of resources added by this switch is 0 (Neutral).
+The language code of resources added by this switch is 0 (Neutral) by default, and you
+can change it using the /langid option. For example, specify /langid 0x409 along with
+/rf to add/modify ENU resources.
 Named resource types and ids are not implemented.
 The file is added as opaque binary chunk; the resource size is rounded up to 4 bytes
 and padded with zero bytes.
